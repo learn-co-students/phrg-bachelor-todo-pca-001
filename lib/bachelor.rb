@@ -1,16 +1,13 @@
 def get_first_name_of_season_winner(data, season)
-  winner = ""
   data.each do |key, value|
-    if key == "season 10"
-      value.each do |key1, value1|
-        if key1 == "status" && value1 == "Winner"
-          return "name".split.first
-          winner = "name"
-        end 
-      end 
-    end 
-  end 
-  return winner
+    next unless key == season
+
+    value.each do |contestant_hash|
+      if contestant_hash["status"] == "Winner"
+        return contestant_hash["name"].split.first
+      end
+    end
+  end
 end
 
 def get_contestant_name(data, occupation)
