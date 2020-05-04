@@ -35,8 +35,8 @@ end
 
 
 def get_occupation(data, hometown)
-data.each do |key, contestants|
-contestants.each do |contestant_hash|
+  data.each do |key, contestants|
+  contestants.each do |contestant_hash|
     if contestant_hash["hometown"] == hometown
     return contestant_hash["occupation"]
   end
@@ -45,5 +45,13 @@ end
 end
 
 
-def get_average_age_for_season(data, season)
+def get_average_age_for_season(data, season) # season = "season 17"
+  total_from_season = 0
+  years_alive = 0
+  data[season].each do |contestant_hash|
+    years_alive += contestant_hash["age"].to_f
+    total_from_season += 1
+    return (years_alive / total_from_season).round
+  end
 end
+
