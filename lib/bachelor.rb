@@ -1,3 +1,4 @@
+
 def get_first_name_of_season_winner(data, season)
   # code here
   data[season][0]["name"].split(" ")[0]
@@ -37,5 +38,11 @@ def get_occupation(data, hometown)
 end
 
 def get_average_age_for_season(data, season)
-  # code here
+  total = 0
+  sum = 0
+   data[season].each do |contestant| 
+    sum += contestant["age"].to_i
+    total += 1
+  end
+ return (sum.to_f / total.to_f).round
 end
