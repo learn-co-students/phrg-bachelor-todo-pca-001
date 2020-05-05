@@ -45,13 +45,17 @@ end
 end
 
 
-def get_average_age_for_season(data, season) # season = "season 17"
-  total_from_season = 0
-  years_alive = 0
-  data[season].each do |contestant_hash|
-    years_alive += contestant_hash["age"].to_f
-    total_from_season += 1
-    return (years_alive / total_from_season).round
+def get_average_age_for_season(data, season)
+  count = 0
+  data[season].each do |contestant|
+  contestant_age = contestant["age"].to_i
+  count = contestant_age + count
   end
+  puts count
+
+  (count.to_f / data[season].length).round
 end
+
+
+
 
